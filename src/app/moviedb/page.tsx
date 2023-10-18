@@ -2,33 +2,18 @@ export default function MovieDB() {
     const endpoints = [
         {
             name: "/movies",
-            type: "GET",
-            req: "API auth key (Bearer key)",
-            res: ""
-        },
-        {
-            name: "/movies",
             type: "POST",
-            req: "",
-            res: ""
+            body: "Endpoint used for data query with pagging."
         },
         {
-            name: "/movies",
-            type: "PUT",
-            req: "",
-            res: ""
+            name: "/movie",
+            type: "POST",
+            body: "Endpoint used for query of specific movie by id. (ID are same as TMBD)"
         },
         {
-            name: "/movies",
-            type: "DELETE",
-            req: "",
-            res: ""
-        },
-        {
-            name: "/movies",
-            type: "PATCH",
-            req: "",
-            res: ""
+            name: "/search",
+            type: "POST",
+            body: "Real-time endpoint used for search in database to return movies with name containing search."
         }
     ]
 
@@ -44,24 +29,21 @@ export default function MovieDB() {
             <section>
             {
                 endpoints.map((endpoint,key) => (
-                    <div className="endpoint" key={key}>
-                        <div className="endpoint-head">
-                            <div className="endpoint-title">
-                                {endpoint.name}
+                    <a href={`/moviedb/${endpoint.name}`} key={key}>
+                        <div className="endpoint">
+                            <div className="endpoint-head">
+                                <div className="endpoint-title">
+                                    {endpoint.name}
+                                </div>
+                                <div className={`endpoint-type ${endpoint.type}`}>
+                                    {endpoint.type} 
+                                </div>
                             </div>
-                            <div className={`endpoint-type ${endpoint.type}`}>
-                                {endpoint.type} 
-                            </div>
-                        </div>
-                        <div className="endpoint-body">
-                            <div className="endpoint-req">
-                                req: {endpoint.req}
-                            </div>
-                            <div className="endpoint-res">
-                                {endpoint.res}
+                            <div className="endpoint-body">
+                                {endpoint.body}
                             </div>
                         </div>
-                    </div>
+                    </a>
                 ))
             }
             </section>
